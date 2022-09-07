@@ -1,24 +1,72 @@
 import React from "react";
-import { useEffect } from "react";
 import ProfilePage from "./pages/ProfilePage";
-import { useState } from "react";
-import axios from "axios";
-import "./style/App.css";
+import "./style/app.css";
 
 const App = () => {
-  const [dataUser, setDataUser] = useState({});
+  const dataUser = {
+    user: {
+      id: 18,
+      userInfos: {
+        firstName: "Cecilia",
+        lastName: "Ratorez",
+        age: 34,
+      },
+      score: 0.3,
+      keyData: {
+        calorieCount: 2500,
+        proteinCount: 90,
+        carbohydrateCount: 150,
+        lipidCount: 120,
+      },
+    },
+  };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/data.json")
-      .then((res) => setDataUser(res.data.user))
-      .catch(() => console.log("Error"));
-  }, []);
+  const dataActivities = {
+    activity: {
+      userId: 18,
+      sessions: [
+        {
+          day: "2020-07-01",
+          kilogram: 70,
+          calories: 240,
+        },
+        {
+          day: "2020-07-02",
+          kilogram: 69,
+          calories: 220,
+        },
+        {
+          day: "2020-07-03",
+          kilogram: 70,
+          calories: 280,
+        },
+        {
+          day: "2020-07-04",
+          kilogram: 70,
+          calories: 500,
+        },
+        {
+          day: "2020-07-05",
+          kilogram: 69,
+          calories: 160,
+        },
+        {
+          day: "2020-07-06",
+          kilogram: 69,
+          calories: 162,
+        },
+        {
+          day: "2020-07-07",
+          kilogram: 69,
+          calories: 390,
+        },
+      ],
+    },
+  };
 
-  // Obligation d'ajouter un log avant car problème d'asynchrome
-  console.log(dataUser);
-
-  return <ProfilePage dataUser={dataUser} />;
+  return (
+    <ProfilePage dataUser={dataUser.user} dataActivities={dataActivities} />
+  );
 };
 
 export default App;
