@@ -1,0 +1,5 @@
+.macros__container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 39px;
+}
