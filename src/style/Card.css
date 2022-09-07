@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 24px;
 }
 
 .macro__img {
@@ -17,7 +18,7 @@
 .macro__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
