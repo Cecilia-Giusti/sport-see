@@ -1,0 +1,9 @@
+.profilPage__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilPage__content {
+  display: flex;
+  gap: 31px;
+}

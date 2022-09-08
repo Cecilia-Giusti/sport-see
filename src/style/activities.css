@@ -1,0 +1,11 @@
+.activities__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 835px;
+  width: 74%;
+  overflow: hidden;
+}
+
+.activities__contents {
+  display: flex;
+}
