@@ -7,7 +7,7 @@ const Card = ({ type, number, image }) => {
       <img className="macro__img" src={image} alt="logo" />
       <div className="macro__content">
         {type === "Calories" ? (
-          <p className="macro__number">{number}kCal</p>
+          <p className="macro__number">{number.toLocaleString("en-IN")}kCal</p>
         ) : (
           <p className="macro__number">{number}g</p>
         )}

@@ -1,15 +1,15 @@
 import React from "react";
 import Activities from "../components/Activities";
 import Header from "../components/Header";
-import "../style/header.css";
+import "../style/profilePage.css";
 import Macros from "../components/Macros";
 
-const ProfilePage = ({ dataUser, dataActivities }) => {
+const ProfilePage = ({ dataUser, dataActivities, dataAverage }) => {
   return (
     <div className="profilPage__container">
       <Header firstName={dataUser.userInfos.firstName} />
       <div className="profilPage__content">
-        <Activities dataActivities={dataActivities} />
+        <Activities dataActivities={dataActivities} dataAverage={dataAverage} />
         <Macros macros={dataUser.keyData} />
       </div>
     </div>

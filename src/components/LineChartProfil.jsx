@@ -5,26 +5,42 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   Line,
 } from "recharts";
+import "../style/graphLine.css";
 
 const LineChartProfil = ({ data }) => {
   return (
     <div>
       <LineChart
-        width={730}
-        height={250}
+        width={258}
+        height={263}
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 5, right: 0, left: 10, bottom: 5 }}
+        className="graphLine__content"
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        <CartesianGrid horizontal={false} vertical={false} />
+        <XAxis
+          dataKey="day"
+          tick={{ fill: "#ffffff", fontWeight: 500, fontSize: 12 }}
+          fillOpacity={0.5}
+          tickLine={false}
+          style={{ transform: "scale(0.9)", transformOrigin: "bottom" }}
+          tickMargin={10}
+          axisLine={false}
+        />
+
+        <YAxis hide={true} dataKey="sessionLenght" />
+
+        <Tooltip wrapperStyle={{ backgroundColor: "#fff" }} />
+        <Line
+          type="natural"
+          dataKey="sessionLenght"
+          stroke="white"
+          strokeWidth=" 2"
+          dot={false}
+          opacity={0.8}
+        />
       </LineChart>
     </div>
   );

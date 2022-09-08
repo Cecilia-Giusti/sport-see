@@ -1,6 +1,8 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import "./style/app.css";
+import { DataTransformAverage } from "./utils/utility";
 
 const App = () => {
   const dataUser = {
@@ -64,8 +66,80 @@ const App = () => {
     },
   };
 
+  const dataAverage = {
+    "average-session": {
+      userId: 18,
+      sessions: [
+        {
+          day: 1,
+          sessionLength: 30,
+        },
+        {
+          day: 2,
+          sessionLength: 40,
+        },
+        {
+          day: 3,
+          sessionLength: 50,
+        },
+        {
+          day: 4,
+          sessionLength: 30,
+        },
+        {
+          day: 5,
+          sessionLength: 30,
+        },
+        {
+          day: 6,
+          sessionLength: 50,
+        },
+        {
+          day: 7,
+          sessionLength: 50,
+        },
+      ],
+    },
+  };
+
+  //Appel API !
+
+  // const [dataUserAxios, setDataUserAxios] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get("./data/db.json").then((res) => setDataUserAxios(res.data.user));
+  // }, []);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch(`./data/db.json`);
+  //       const dataUser = await response.json();
+  //       setDataUser(dataUser);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+
+  const dataJson = dataAverage["average-session"].sessions;
+  const dataUpdateAverage = (dataJson) => {
+    let dataAverageArray = [];
+
+    dataJson.forEach((element) => {
+      let newData = new DataTransformAverage(element);
+      dataAverageArray.push(newData);
+    });
+    return dataAverageArray;
+  };
+
   return (
-    <ProfilePage dataUser={dataUser.user} dataActivities={dataActivities} />
+    <ProfilePage
+      dataUser={dataUser.user}
+      dataActivities={dataActivities}
+      dataAverage={dataUpdateAverage(dataJson)}
+    />
   );
 };
 
