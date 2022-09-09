@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import "./style/app.css";
-import { DataTransformAverage } from "./utils/utility";
+import { DataTransformAverage } from "./Class/DataTransformAverage";
+import { DataTransformActivities } from "./Class/DataTransformActivities";
 
 const App = () => {
   const dataUser = {
@@ -124,6 +125,11 @@ const App = () => {
   // }, []);
 
   const dataJson = dataAverage["average-session"].sessions;
+
+  /**Modélisation des données des sessions moyennes
+   * @param {Object} - Données json à traiter
+   * @return {Array}
+   */
   const dataUpdateAverage = (dataJson) => {
     let dataAverageArray = [];
 
@@ -134,10 +140,22 @@ const App = () => {
     return dataAverageArray;
   };
 
+  const dataActivitiesSession = dataActivities.activity.sessions;
+
+  const DataUpdateSession = (dataActivitiesSession) => {
+    let dataSessionArray = [];
+
+    dataActivitiesSession.forEach((element) => {
+      let newData = new DataTransformActivities(element);
+      dataSessionArray.push(newData);
+    });
+    return dataSessionArray;
+  };
+
   return (
     <ProfilePage
       dataUser={dataUser.user}
-      dataActivities={dataActivities}
+      dataActivities={DataUpdateSession(dataActivitiesSession)}
       dataAverage={dataUpdateAverage(dataJson)}
     />
   );

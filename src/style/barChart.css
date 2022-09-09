@@ -1,0 +1,16 @@
+.barChart {
+  margin-bottom: 30px;
+}
+
+.barChart__content {
+  background: rgba(251, 251, 251, 1);
+  border-radius: 5px;
+}
+
+.barChart .recharts-cartesian-axis-ticks {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
