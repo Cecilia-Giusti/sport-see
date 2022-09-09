@@ -28,19 +28,19 @@
   left: 34px;
 }
 
-.toolTip__content {
+.graphLine__content--toolTip {
   width: 39px;
   height: 25px;
   background-color: white;
 }
 
-.toolTip__content:focus-visible,
-.toolTip__item:focus-visible,
+.graphLine__content--toolTip:focus-visible,
+.graphLine__item--toolTip:focus-visible,
 .recharts-tooltip-wrapper:focus-visible {
   outline: none;
 }
 
-.toolTip__item {
+.graphLine__item--toolTip {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;

@@ -14,8 +14,8 @@ const LineChartProfil = ({ data }) => {
   const CustomizedTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="toolTip__content">
-          <p className="toolTip__item">{`${payload[0].value} min`}</p>
+        <div className="graphLine__content--toolTip">
+          <p className="graphLine__item--toolTip">{`${payload[0].value} min`}</p>
         </div>
       );
     }

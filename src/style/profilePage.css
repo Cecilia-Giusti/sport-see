@@ -8,4 +8,5 @@
 .profilPage__content {
   display: flex;
   gap: 31px;
+  margin-top: 70px;
 }
