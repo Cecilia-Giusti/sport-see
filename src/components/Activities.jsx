@@ -1,7 +1,7 @@
 import React from "react";
 import BarChartProfil from "./BarChartProfil";
 import LineChartProfil from "./LineChartProfil";
-import PieChartProfil from "./PieChartProfil";
+import RadialBarProfil from "./RadialBarProfil";
 import RadarChartProfil from "./RadarChartProfil";
 import "../style/activities.css";
 
@@ -12,7 +12,7 @@ const Activities = ({ dataActivities, dataAverage, dataPerformance }) => {
       <div className="activities__contents">
         <LineChartProfil data={dataAverage} />
         <RadarChartProfil data={dataPerformance} />
-        <PieChartProfil />
+        <RadialBarProfil />
       </div>
     </div>
   );
