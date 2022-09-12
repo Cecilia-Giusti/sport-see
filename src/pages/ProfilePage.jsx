@@ -12,16 +12,14 @@ const ProfilePage = ({
 }) => {
   return (
     <div className="profilPage__container">
-      {dataUser && <Header firstName={dataUser.userInfos.firstName} />}
+      <Header firstName={dataUser.userInfos.firstName} />
       <div className="profilPage__content">
-        {dataActivities && dataAverage && (
-          <Activities
-            dataActivities={dataActivities}
-            dataAverage={dataAverage}
-            // dataPerformance={dataPerformance}
-          />
-        )}
-        {dataUser && <Macros macros={dataUser.keyData} />}
+        <Activities
+          dataActivities={dataActivities}
+          dataAverage={dataAverage}
+          dataPerformance={dataPerformance}
+        />
+        <Macros macros={dataUser.keyData} />
       </div>
     </div>
   );

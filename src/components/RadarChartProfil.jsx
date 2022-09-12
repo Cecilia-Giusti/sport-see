@@ -5,24 +5,30 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
-  Legend,
 } from "recharts";
+import "../style/radarChart.css";
 
 const RadarChartProfil = ({ data }) => {
   return (
-    <div>
-      <RadarChart outerRadius={90} width={730} height={250} data={data}>
-        <PolarGrid />
-        <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis angle={30} domain={[0, 150]} />
-        <Radar
-          name="Mike"
-          dataKey="value"
-          stroke="#8884d8"
-          fill="#8884d8"
-          fillOpacity={0.6}
+    <div className="radarChart">
+      <RadarChart
+        width={258}
+        height={263}
+        margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+        data={data}
+        style={{ backgroundColor: "#282D30", "border-radius": "5px" }}
+      >
+        <PolarGrid radialLines={false} />
+        <PolarAngleAxis
+          dataKey="subject"
+          tickLine={false}
+          axisLine={false}
+          dy={5}
+          stroke="#FFF"
+          tick={{ fill: "#FFFFFF", fontSize: 12 }}
         />
-        <Legend />
+        <PolarRadiusAxis tick={false} tickCount={5} axisLine={false} />
+        <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
       </RadarChart>
     </div>
   );
