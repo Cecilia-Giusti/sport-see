@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import ProfilePage from "./pages/ProfilePage";
+import getUsers from "./service/getUsers";
+import getSessions from "./service/getSessions";
+import getAverageSessions from "./service/getAverageSessions";
+import getPerformances from "./service/getPerformances";
 import "./style/app.css";
 import dataUpdateAverage from "./utils/dataUpdateAverage";
 import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
-import getUsers from "./service/getUsers";
-import getSessions from "./service/getSessions";
-import getAverageSessions from "./service/getAverageSessions";
-import getDataKind from "./service/getDataKind";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
-  const [dataUser, setDataUser] = useState([]);
-  const [dataSession, setDataSession] = useState([]);
-  const [dataAverage, setDataAverage] = useState([]);
-  const [dataPerformance, setDataPerformance] = useState([]);
+  const [dataUser, setDataUser] = useState(null);
+  const [dataSession, setDataSession] = useState(null);
+  const [dataAverage, setDataAverage] = useState(null);
+  const [dataPerformance, setDataPerformance] = useState(null);
 
   useEffect(() => {
     getUsers(setDataUser);
@@ -28,7 +28,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    getDataKind(setDataPerformance);
+    getPerformances(setDataPerformance);
   }, []);
 
   return (

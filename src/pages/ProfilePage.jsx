@@ -12,14 +12,14 @@ const ProfilePage = ({
 }) => {
   return (
     <div className="profilPage__container">
-      <Header firstName={dataUser.userInfos.firstName} />
+      {dataUser && <Header firstName={dataUser.userInfos.firstName} />}
       <div className="profilPage__content">
         <Activities
           dataActivities={dataActivities}
           dataAverage={dataAverage}
           dataPerformance={dataPerformance}
         />
-        <Macros macros={dataUser.keyData} />
+        {dataUser && <Macros macros={dataUser.keyData} />}
       </div>
     </div>
   );
