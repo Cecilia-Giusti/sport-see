@@ -11,7 +11,7 @@ const dataUpdatePerformance = (data) => {
     let newData = new DataTransformPerformance(element);
     dataSessionArray.push(newData);
   });
-  return dataSessionArray;
+  return dataSessionArray.reverse();
 };
 
 export default dataUpdatePerformance;
