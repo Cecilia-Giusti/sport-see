@@ -1,11 +1,19 @@
 export class DataTransformPerformance {
-  constructor(data, kind) {
-    this._data = data.data;
-    this._kind = kind;
+  constructor(element) {
+    this._data = element;
+    this._number = element.kind;
   }
 
   get subject() {
-    let newKind = this._kind.this._data.kind;
+    const kind = [
+      "Cardio",
+      "Energie",
+      "Endurance",
+      "Force",
+      "Vitesse",
+      "Intensité",
+    ];
+    let newKind = kind[this._number - 1];
 
     return newKind;
   }

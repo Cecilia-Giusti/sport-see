@@ -7,4 +7,5 @@
 
 .activities__contents {
   display: flex;
+  gap: 30px;
 }
