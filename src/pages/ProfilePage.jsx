@@ -4,13 +4,24 @@ import Header from "../components/Header";
 import "../style/profilePage.css";
 import Macros from "../components/Macros";
 
-const ProfilePage = ({ dataUser, dataActivities, dataAverage }) => {
+const ProfilePage = ({
+  dataUser,
+  dataActivities,
+  dataAverage,
+  dataPerformance,
+}) => {
   return (
     <div className="profilPage__container">
-      <Header firstName={dataUser.userInfos.firstName} />
+      {dataUser && <Header firstName={dataUser.userInfos.firstName} />}
       <div className="profilPage__content">
-        <Activities dataActivities={dataActivities} dataAverage={dataAverage} />
-        <Macros macros={dataUser.keyData} />
+        {dataActivities && dataAverage && (
+          <Activities
+            dataActivities={dataActivities}
+            dataAverage={dataAverage}
+            // dataPerformance={dataPerformance}
+          />
+        )}
+        {dataUser && <Macros macros={dataUser.keyData} />}
       </div>
     </div>
   );

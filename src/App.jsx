@@ -1,130 +1,39 @@
-// import axios from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import "./style/app.css";
 import { DataTransformAverage } from "./Class/DataTransformAverage";
 import { DataTransformActivities } from "./Class/DataTransformActivities";
+// import { DataTransformPerformance } from "./Class/DataTransformPerformance";
+import getUsers from "./service/getUsers";
+import getSessions from "./service/getSessions";
+import getAverageSessions from "./service/getAverageSessions";
 
 const App = () => {
-  const dataUser = {
-    user: {
-      id: 18,
-      userInfos: {
-        firstName: "Cecilia",
-        lastName: "Ratorez",
-        age: 34,
-      },
-      score: 0.3,
-      keyData: {
-        calorieCount: 2500,
-        proteinCount: 90,
-        carbohydrateCount: 150,
-        lipidCount: 120,
-      },
-    },
-  };
+  const [dataUser, setDataUser] = useState([]);
+  const [dataSession, setDataSession] = useState([]);
+  const [dataAverage, setDataAverage] = useState([]);
 
-  const dataActivities = {
-    activity: {
-      userId: 18,
-      sessions: [
-        {
-          day: "2020-07-01",
-          kilogram: 70,
-          calories: 240,
-        },
-        {
-          day: "2020-07-02",
-          kilogram: 69,
-          calories: 220,
-        },
-        {
-          day: "2020-07-03",
-          kilogram: 70,
-          calories: 280,
-        },
-        {
-          day: "2020-07-04",
-          kilogram: 70,
-          calories: 500,
-        },
-        {
-          day: "2020-07-05",
-          kilogram: 69,
-          calories: 160,
-        },
-        {
-          day: "2020-07-06",
-          kilogram: 69,
-          calories: 162,
-        },
-        {
-          day: "2020-07-07",
-          kilogram: 69,
-          calories: 390,
-        },
-      ],
-    },
-  };
+  useEffect(() => {
+    getUsers(setDataUser);
+  }, []);
 
-  const dataAverage = {
-    "average-session": {
-      userId: 18,
-      sessions: [
-        {
-          day: 1,
-          sessionLength: 30,
-        },
-        {
-          day: 2,
-          sessionLength: 40,
-        },
-        {
-          day: 3,
-          sessionLength: 50,
-        },
-        {
-          day: 4,
-          sessionLength: 30,
-        },
-        {
-          day: 5,
-          sessionLength: 30,
-        },
-        {
-          day: 6,
-          sessionLength: 50,
-        },
-        {
-          day: 7,
-          sessionLength: 50,
-        },
-      ],
-    },
-  };
+  useEffect(() => {
+    getSessions(setDataSession);
+  }, []);
 
-  //Appel API !
+  useEffect(() => {
+    getAverageSessions(setDataAverage);
+  }, []);
 
-  // const [dataUserAxios, setDataUserAxios] = useState([]);
+  // //Performance
+  // const [dataPerformance, setDataPerformance] = useState([]);
 
   // useEffect(() => {
-  //   axios.get("./data/db.json").then((res) => setDataUserAxios(res.data.user));
+  //   axios.get("./data/db.json").then((res) => setDataPerformance(res.data));
   // }, []);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await fetch(`./data/db.json`);
-  //       const dataUser = await response.json();
-  //       setDataUser(dataUser);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
-
-  const dataJson = dataAverage["average-session"].sessions;
+  // console.log(dataPerformance);
 
   /**Modélisation des données des sessions moyennes
    * @param {Object} - Données json à traiter
@@ -140,8 +49,10 @@ const App = () => {
     return dataAverageArray;
   };
 
-  const dataActivitiesSession = dataActivities.activity.sessions;
-
+  /**Modélisation des données de l'activité journalières
+   * @param {Object} - Données json à traiter
+   * @return {Array}
+   */
   const DataUpdateSession = (dataActivitiesSession) => {
     let dataSessionArray = [];
 
@@ -152,11 +63,30 @@ const App = () => {
     return dataSessionArray;
   };
 
+  // /**Modélisation des données des performances
+  //  * @param {Object} - Données json à traiter
+  //  * @return {Array}
+  //  */
+  // const DataUpdatePerformance = (dataPerformances) => {
+  //   let dataSessionArray = [];
+  //   let dataPerformanceArray = dataPerformances.data;
+
+  //   dataPerformanceArray.forEach((element) => {
+  //     let newData = new DataTransformPerformance(
+  //       element,
+  //       dataPerformances.kind
+  //     );
+  //     dataSessionArray.push(newData);
+  //   });
+  //   return dataSessionArray;
+  // };
+
   return (
     <ProfilePage
       dataUser={dataUser.user}
-      dataActivities={DataUpdateSession(dataActivitiesSession)}
-      dataAverage={dataUpdateAverage(dataJson)}
+      dataActivities={DataUpdateSession(dataSession)}
+      dataAverage={dataUpdateAverage(dataAverage)}
+      // dataPerformance={DataUpdatePerformance(dataPerformance.performance)}
     />
   );
 };

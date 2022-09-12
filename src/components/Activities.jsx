@@ -5,13 +5,13 @@ import PieChartProfil from "./PieChartProfil";
 import RadarChartProfil from "./RadarChartProfil";
 import "../style/activities.css";
 
-const Activities = ({ dataActivities, dataAverage }) => {
+const Activities = ({ dataActivities, dataAverage, dataPerformance }) => {
   return (
     <div className="activities__container">
       <BarChartProfil data={dataActivities} />
       <div className="activities__contents">
         <LineChartProfil data={dataAverage} />
-        <RadarChartProfil />
+        <RadarChartProfil data={dataPerformance} />
         <PieChartProfil />
       </div>
     </div>
