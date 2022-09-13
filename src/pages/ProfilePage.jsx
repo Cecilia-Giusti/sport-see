@@ -9,17 +9,19 @@ const ProfilePage = ({
   dataActivities,
   dataAverage,
   dataPerformance,
+  dataScore,
 }) => {
   return (
     <div className="profilPage__container">
-      {dataUser && <Header firstName={dataUser.userInfos.firstName} />}
+      <Header firstName={dataUser.userInfos.firstName} />
       <div className="profilPage__content">
         <Activities
           dataActivities={dataActivities}
           dataAverage={dataAverage}
           dataPerformance={dataPerformance}
+          dataScore={dataScore}
         />
-        {dataUser && <Macros macros={dataUser.keyData} />}
+        <Macros macros={dataUser.keyData} />
       </div>
     </div>
   );

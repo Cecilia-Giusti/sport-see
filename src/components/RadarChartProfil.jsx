@@ -16,7 +16,7 @@ const RadarChartProfil = ({ data }) => {
         height={263}
         margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
         data={data}
-        style={{ backgroundColor: "#282D30", "border-radius": "5px" }}
+        style={{ backgroundColor: "#282D30", borderRadius: "5px" }}
       >
         <PolarGrid radialLines={false} />
         <PolarAngleAxis

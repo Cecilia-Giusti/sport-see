@@ -1,0 +1,44 @@
+.radialChart {
+  position: relative;
+}
+
+.radialChart__title {
+  position: absolute;
+  left: 11.63%;
+  top: -10px;
+  z-index: 100;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #20253a;
+}
+
+.radialChart__circle {
+  z-index: 250;
+}
+
+.radialChart__item {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: #74798c;
+  position: absolute;
+  z-index: 300;
+  left: 32.17%;
+  top: 55px;
+  width: 95px;
+}
+
+.radialChart__item span {
+  font-weight: 700;
+  font-size: 26px;
+
+  text-align: center;
+
+  color: #282d30;
+}

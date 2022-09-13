@@ -5,14 +5,19 @@ import RadialBarProfil from "./RadialBarProfil";
 import RadarChartProfil from "./RadarChartProfil";
 import "../style/activities.css";
 
-const Activities = ({ dataActivities, dataAverage, dataPerformance }) => {
+const Activities = ({
+  dataActivities,
+  dataAverage,
+  dataPerformance,
+  dataScore,
+}) => {
   return (
     <div className="activities__container">
       <BarChartProfil data={dataActivities} />
       <div className="activities__contents">
         <LineChartProfil data={dataAverage} />
         <RadarChartProfil data={dataPerformance} />
-        <RadialBarProfil />
+        <RadialBarProfil data={dataScore} />
       </div>
     </div>
   );
