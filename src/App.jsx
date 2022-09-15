@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import getUsers from "./service/getUsers";
 import getScore from "./service/getScore";
 import getSessions from "./service/getSessions";
@@ -10,7 +11,7 @@ import dataUpdateScore from "./utils/dataUpdateScore";
 import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
-import { DataMocked, UserId } from "./components/AppContext";
+import { DataMocked } from "./components/AppContext";
 
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
@@ -19,7 +20,7 @@ const App = () => {
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
   const dataMocked = useContext(DataMocked);
-  const userId = useContext(UserId);
+  const userId = useParams().id;
 
   useEffect(() => {
     getUsers(setDataUser, dataMocked, userId);
