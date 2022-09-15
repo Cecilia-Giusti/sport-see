@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import getUsers from "./service/getUsers";
 import getScore from "./service/getScore";
 import getSessions from "./service/getSessions";
@@ -10,6 +10,8 @@ import dataUpdateScore from "./utils/dataUpdateScore";
 import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
+import axios from "axios";
+import { DataMocked, IdUser } from "./components/AppContext";
 
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
@@ -17,10 +19,16 @@ const App = () => {
   const [dataAverage, setDataAverage] = useState(null);
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
+  const dataMocked = useContext(DataMocked);
+  const idUser = useContext(IdUser);
+
+  useEffect(() => {}, []);
+
+  // console.log(dataUser);
 
   useEffect(() => {
-    getUsers(setDataUser);
-  }, []);
+    getUsers(setDataUser, dataMocked, idUser);
+  }, [dataMocked, idUser]);
 
   useEffect(() => {
     getSessions(setDataSession);
@@ -46,7 +54,7 @@ const App = () => {
         dataPerformance &&
         dataScore && (
           <ProfilePage
-            dataUser={dataUser.user}
+            dataUser={dataUser}
             dataActivities={dataUpdateSession(dataSession)}
             dataAverage={dataUpdateAverage(dataAverage)}
             dataPerformance={dataUpdatePerformance(
