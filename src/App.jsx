@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import getUsers from "./service/getUsers";
 import getScore from "./service/getScore";
 import getSessions from "./service/getSessions";
@@ -10,6 +11,7 @@ import dataUpdateScore from "./utils/dataUpdateScore";
 import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
+import { DataMocked } from "./components/AppContext";
 
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
@@ -17,26 +19,16 @@ const App = () => {
   const [dataAverage, setDataAverage] = useState(null);
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
+  const dataMocked = useContext(DataMocked);
+  const userId = useParams().id;
 
   useEffect(() => {
-    getUsers(setDataUser);
-  }, []);
-
-  useEffect(() => {
-    getSessions(setDataSession);
-  }, []);
-
-  useEffect(() => {
-    getAverageSessions(setDataAverage);
-  }, []);
-
-  useEffect(() => {
-    getPerformances(setDataPerformance);
-  }, []);
-
-  useEffect(() => {
-    getScore(setDataScore);
-  }, []);
+    getUsers(setDataUser, dataMocked, userId);
+    getSessions(setDataSession, dataMocked, userId);
+    getAverageSessions(setDataAverage, dataMocked, userId);
+    getPerformances(setDataPerformance, dataMocked, userId);
+    getScore(setDataScore, dataMocked, userId);
+  }, [dataMocked, userId]);
 
   return (
     <div className="section--profilPage">
@@ -46,12 +38,10 @@ const App = () => {
         dataPerformance &&
         dataScore && (
           <ProfilePage
-            dataUser={dataUser.user}
+            dataUser={dataUser}
             dataActivities={dataUpdateSession(dataSession)}
             dataAverage={dataUpdateAverage(dataAverage)}
-            dataPerformance={dataUpdatePerformance(
-              dataPerformance.performance.data
-            )}
+            dataPerformance={dataUpdatePerformance(dataPerformance.data)}
             dataScore={dataUpdateScore(dataScore)}
           />
         )}

@@ -3,7 +3,6 @@ import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
 import "../style/radialChart.css";
 
 const RadialBarProfil = ({ data }) => {
-  console.log(data);
   return (
     <div className="radialChart">
       <h5 className="radialChart__title">Score</h5>
