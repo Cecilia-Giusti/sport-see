@@ -10,8 +10,7 @@ import dataUpdateScore from "./utils/dataUpdateScore";
 import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
-import axios from "axios";
-import { DataMocked, IdUser } from "./components/AppContext";
+import { DataMocked, UserId } from "./components/AppContext";
 
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
@@ -20,31 +19,15 @@ const App = () => {
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
   const dataMocked = useContext(DataMocked);
-  const idUser = useContext(IdUser);
-
-  useEffect(() => {}, []);
-
-  // console.log(dataUser);
+  const userId = useContext(UserId);
 
   useEffect(() => {
-    getUsers(setDataUser, dataMocked, idUser);
-  }, [dataMocked, idUser]);
-
-  useEffect(() => {
-    getSessions(setDataSession);
-  }, []);
-
-  useEffect(() => {
-    getAverageSessions(setDataAverage);
-  }, []);
-
-  useEffect(() => {
-    getPerformances(setDataPerformance);
-  }, []);
-
-  useEffect(() => {
-    getScore(setDataScore);
-  }, []);
+    getUsers(setDataUser, dataMocked, userId);
+    getSessions(setDataSession, dataMocked, userId);
+    getAverageSessions(setDataAverage, dataMocked, userId);
+    getPerformances(setDataPerformance, dataMocked, userId);
+    getScore(setDataScore, dataMocked, userId);
+  }, [dataMocked, userId]);
 
   return (
     <div className="section--profilPage">
@@ -57,9 +40,7 @@ const App = () => {
             dataUser={dataUser}
             dataActivities={dataUpdateSession(dataSession)}
             dataAverage={dataUpdateAverage(dataAverage)}
-            dataPerformance={dataUpdatePerformance(
-              dataPerformance.performance.data
-            )}
+            dataPerformance={dataUpdatePerformance(dataPerformance.data)}
             dataScore={dataUpdateScore(dataScore)}
           />
         )}

@@ -1,6 +1,6 @@
 export class DataTransformScore {
   constructor(data) {
-    this._score = data.score;
+    this._score = data;
   }
 
   get name() {
