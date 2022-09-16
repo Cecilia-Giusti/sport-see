@@ -9,6 +9,7 @@ import {
   Rectangle,
 } from "recharts";
 import "../style/graphLine.css";
+import PropTypes from "prop-types";
 
 const LineChartProfil = ({ data }) => {
   const CustomizedTooltip = ({ active, payload }) => {
@@ -74,6 +75,15 @@ const LineChartProfil = ({ data }) => {
       </LineChart>
     </div>
   );
+};
+
+LineChartProfil.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string.isRequired,
+      sessionLenght: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default LineChartProfil;

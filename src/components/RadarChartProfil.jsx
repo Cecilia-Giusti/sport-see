@@ -7,6 +7,7 @@ import {
   Radar,
 } from "recharts";
 import "../style/radarChart.css";
+import PropTypes from "prop-types";
 
 const RadarChartProfil = ({ data }) => {
   return (
@@ -32,6 +33,15 @@ const RadarChartProfil = ({ data }) => {
       </RadarChart>
     </div>
   );
+};
+
+RadarChartProfil.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      subject: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default RadarChartProfil;

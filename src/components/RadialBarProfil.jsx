@@ -1,6 +1,7 @@
 import React from "react";
 import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
 import "../style/radialChart.css";
+import PropTypes from "prop-types";
 
 const RadialBarProfil = ({ data }) => {
   return (
@@ -26,6 +27,16 @@ const RadialBarProfil = ({ data }) => {
       </RadialBarChart>
     </div>
   );
+};
+
+RadialBarProfil.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      fill: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default RadialBarProfil;

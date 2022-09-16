@@ -5,6 +5,7 @@ import carbsIcon from "../assets/carbs-icon.png";
 import fatIcon from "../assets/fat-icon.png";
 import proteinIcon from "../assets/protein-icon.png";
 import "../style/macros.css";
+import PropTypes from "prop-types";
 
 const Macros = ({ macros }) => {
   return (
@@ -19,6 +20,15 @@ const Macros = ({ macros }) => {
       <Card type="Lipides" number={macros.lipidCount} image={fatIcon} />
     </aside>
   );
+};
+
+Macros.propTypes = {
+  macros: PropTypes.shape({
+    calorieCount: PropTypes.number.isRequired,
+    carbohydrateCount: PropTypes.number.isRequired,
+    lipidCount: PropTypes.number.isRequired,
+    proteinCount: PropTypes.number.isRequired,
+  }),
 };
 
 export default Macros;

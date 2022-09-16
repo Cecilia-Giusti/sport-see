@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../style/header.css";
 
 const Header = ({ firstName }) => {
@@ -14,4 +15,7 @@ const Header = ({ firstName }) => {
   );
 };
 
+Header.propTypes = {
+  firstName: PropTypes.string.isRequired,
+};
 export default Header;

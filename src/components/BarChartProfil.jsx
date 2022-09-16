@@ -9,6 +9,7 @@ import {
   Bar,
 } from "recharts";
 import "../style/barChart.css";
+import PropTypes from "prop-types";
 
 const BarChartProfil = ({ data }) => {
   const renderColorfulLegendText = (value) => {
@@ -100,4 +101,13 @@ const BarChartProfil = ({ data }) => {
   );
 };
 
+BarChartProfil.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      calories: PropTypes.number.isRequired,
+      day: PropTypes.number.isRequired,
+      kilogram: PropTypes.number.isRequired,
+    })
+  ),
+};
 export default BarChartProfil;
