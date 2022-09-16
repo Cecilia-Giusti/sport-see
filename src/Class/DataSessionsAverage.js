@@ -1,3 +1,7 @@
+/**Constructor Pattern - Average session
+ * @constructor
+ * @param {object} data - A average session with a day
+ */
 export class DataSessionsAverage {
   constructor(data) {
     this._day = data.day;

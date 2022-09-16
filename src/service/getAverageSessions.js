@@ -1,6 +1,11 @@
 import axios from "axios";
 import { DataSessionsAverage } from "../Class/DataSessionsAverage";
 
+/**  Get Data - Average session
+ * @param {function} setDataAverage - to update dataAverage
+ * @param {Boolean} dataMocked - if data are mocked
+ * @param {number} userId - user id
+ */
 async function getAverageSessions(setDataAverage, dataMocked, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {

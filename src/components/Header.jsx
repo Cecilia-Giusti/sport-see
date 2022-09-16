@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../style/header.css";
 
+/** Header
+ * @param {string} firstName - user's firstname
+ * @return {JSX.Element}
+ */
 const Header = ({ firstName }) => {
   return (
     <div>

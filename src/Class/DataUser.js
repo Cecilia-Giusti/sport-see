@@ -1,3 +1,7 @@
+/**Constructor Pattern - User
+ * @constructor
+ * @param {object} data - user information
+ */
 export class DataUser {
   constructor(data) {
     this._firstname = data.userInfos.firstName;

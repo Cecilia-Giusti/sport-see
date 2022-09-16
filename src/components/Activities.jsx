@@ -6,6 +6,13 @@ import RadarChartProfil from "./RadarChartProfil";
 import "../style/activities.css";
 import PropTypes from "prop-types";
 
+/** Activities dashboard
+ * @param {array} dataActivities - Activities
+ * @param {array} dataAverage - Average sessions
+ * @param {array} dataPerformance - Performances
+ * @param {array} dataScore - Score
+ * @return {JSX.Element}
+ */
 const Activities = ({
   dataActivities,
   dataAverage,

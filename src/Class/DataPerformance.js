@@ -1,3 +1,7 @@
+/**Constructor Pattern - Performance
+ * @constructor
+ * @param {object} element - A performance
+ */
 export class DataPerformance {
   constructor(element) {
     this._value = element.value;

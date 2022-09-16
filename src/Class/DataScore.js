@@ -1,3 +1,7 @@
+/**Constructor Pattern - Score
+ * @constructor
+ * @param {object} data - A score
+ */
 export class DataScore {
   constructor(data) {
     this._score = data;

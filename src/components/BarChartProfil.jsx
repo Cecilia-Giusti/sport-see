@@ -11,6 +11,10 @@ import {
 import "../style/barChart.css";
 import PropTypes from "prop-types";
 
+/** Diagram
+ * @param {array} data - data for diagram
+ * @return {JSX.Element}
+ */
 const BarChartProfil = ({ data }) => {
   const renderColorfulLegendText = (value) => {
     return <span style={{ color: "#74798C" }}>{value}</span>;

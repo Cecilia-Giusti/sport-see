@@ -1,5 +1,8 @@
 import React from "react";
 
+/** Error
+ * @return {JSX.Element}
+ */
 const Error = () => {
   return (
     <div>

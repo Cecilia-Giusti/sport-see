@@ -3,6 +3,10 @@ import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
 import "../style/radialChart.css";
 import PropTypes from "prop-types";
 
+/** radial bar chart chart
+ * @param {array} data - data for chart
+ * @return {JSX.Element}
+ */
 const RadialBarProfil = ({ data }) => {
   return (
     <div className="radialChart">

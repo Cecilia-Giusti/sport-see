@@ -7,6 +7,10 @@ import proteinIcon from "../assets/protein-icon.png";
 import "../style/macros.css";
 import PropTypes from "prop-types";
 
+/** Macronutrient
+ * @param {object} macros - macronutrient
+ * @return {JSX.Element}
+ */
 const Macros = ({ macros }) => {
   return (
     <aside className="macros__container">

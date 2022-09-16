@@ -1,6 +1,11 @@
 import axios from "axios";
 import { DataUser } from "../Class/DataUser";
 
+/**  Get Data - user
+ * @param {function} setDataUser - to update dataUser
+ * @param {Boolean} dataMocked - if data are mocked
+ * @param {number} userId - user id
+ */
 async function getUsers(setDataUser, dataMocked, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {

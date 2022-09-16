@@ -1,6 +1,11 @@
 import axios from "axios";
 import { DataActivities } from "../Class/DataActivities";
 
+/**  Get Data - Sessions
+ * @param {function} setDataSession - to update dataSession
+ * @param {Boolean} dataMocked - if data are mocked
+ * @param {number} userId - user id
+ */
 async function getSessions(setDataSession, dataMocked, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {

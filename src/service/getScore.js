@@ -1,6 +1,11 @@
 import axios from "axios";
 import { DataScore } from "../Class/DataScore";
 
+/**  Get Data - Score
+ * @param {function} setDataPerformance - to update dataScore
+ * @param {Boolean} dataMocked - if data are mocked
+ * @param {number} userId - user id
+ */
 async function getScore(setDataScore, dataMocked, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {

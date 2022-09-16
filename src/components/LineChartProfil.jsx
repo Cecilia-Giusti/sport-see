@@ -11,6 +11,10 @@ import {
 import "../style/graphLine.css";
 import PropTypes from "prop-types";
 
+/** Line chart
+ * @param {array} data - data for chart
+ * @return {JSX.Element}
+ */
 const LineChartProfil = ({ data }) => {
   const CustomizedTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {

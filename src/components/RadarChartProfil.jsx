@@ -9,6 +9,10 @@ import {
 import "../style/radarChart.css";
 import PropTypes from "prop-types";
 
+/** Radar chart
+ * @param {array} data - data for chart
+ * @return {JSX.Element}
+ */
 const RadarChartProfil = ({ data }) => {
   return (
     <div className="radarChart">

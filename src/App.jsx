@@ -10,6 +10,9 @@ import ProfilePage from "./pages/ProfilePage";
 import { DataMocked } from "./components/AppContext";
 import Error from "./components/Error";
 
+/** APP
+ * @return {JSX.Element}
+ */
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
   const [dataSession, setDataSession] = useState(null);

@@ -5,6 +5,14 @@ import "../style/profilePage.css";
 import Macros from "../components/Macros";
 import PropTypes from "prop-types";
 
+/** Profile page
+ * @param {array} dataUser - user data
+ * @param {array} dataActivities - activities data
+ * @param {array} dataAverage - average sessions data
+ * @param {array}   dataPerformance - performance data
+ * @param {array} dataScore - score data
+ * @return {JSX.Element}
+ */
 const ProfilePage = ({
   dataUser,
   dataActivities,

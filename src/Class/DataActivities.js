@@ -1,3 +1,7 @@
+/**Constructor Pattern - Activities
+ * @constructor
+ * @param {object} data - A session
+ */
 export class DataActivities {
   constructor(data) {
     this._day = data.day;
