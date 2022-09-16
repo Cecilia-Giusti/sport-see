@@ -1,6 +1,6 @@
 export class DataPerformance {
   constructor(element) {
-    this._data = element;
+    this._value = element.value;
     this._number = element.kind;
   }
 
@@ -19,6 +19,6 @@ export class DataPerformance {
   }
 
   get value() {
-    return this._data.value;
+    return this._value;
   }
 }

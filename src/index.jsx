@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <DataMocked.Provider value={false}>
+    <DataMocked.Provider value={true}>
       <BrowserRouter>
         <Routes>
           <Route path="/:id" element={<App />} />
