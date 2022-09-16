@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
   Bar,
+  ResponsiveContainer,
 } from "recharts";
 import "../style/barChart.css";
 import PropTypes from "prop-types";
@@ -36,71 +37,73 @@ const BarChartProfil = ({ data }) => {
   return (
     <div className="barChart">
       <h4 className="barChart__title">Activité quotidienne</h4>
-      <BarChart
-        width={835}
-        height={320}
-        data={data}
-        margin={{
-          top: 23,
-          right: 43,
-          left: 43,
-          bottom: 20,
-        }}
-        barSize={7}
-        barGap={8}
-        tickMargin={16}
-        className="barChart__content"
-        barCategoryGap={54}
-      >
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-        <XAxis dataKey="day" tickLine={false} tick={{ fill: "#9B9EAC" }} />
-        <YAxis
-          yAxisId="kilogram"
-          tickLine={false}
-          orientation="right"
-          axisLine={false}
-          tick={{ fill: "#9B9EAC" }}
-          tickMargin={44}
-          minTickGap={27}
-          dataKey="kilogram"
-          domain={["dataMin - 1", "dataMax + 1"]}
-        />
-        <YAxis
-          yAxisId="calories"
-          dataKey="calories"
-          domain={[0, "dataMax + 50"]}
-          orientation="left"
-          hide
-        />
+      <ResponsiveContainer aspect={2}>
+        <BarChart
+          width={835}
+          height={320}
+          data={data}
+          margin={{
+            top: 23,
+            right: 43,
+            left: 43,
+            bottom: 20,
+          }}
+          barSize={7}
+          barGap={8}
+          tickMargin={16}
+          className="barChart__content"
+          barCategoryGap={54}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="day" tickLine={false} tick={{ fill: "#9B9EAC" }} />
+          <YAxis
+            yAxisId="kilogram"
+            tickLine={false}
+            orientation="right"
+            axisLine={false}
+            tick={{ fill: "#9B9EAC" }}
+            tickMargin={44}
+            minTickGap={27}
+            dataKey="kilogram"
+            domain={["dataMin - 1", "dataMax + 1"]}
+          />
+          <YAxis
+            yAxisId="calories"
+            dataKey="calories"
+            domain={[0, "dataMax + 50"]}
+            orientation="left"
+            hide
+          />
 
-        <Tooltip
-          content={<CustomTooltip />}
-          cursor={{ fill: " rgba(196, 196, 196, 0.5)" }}
-        />
-        <Legend
-          marginBottom={10}
-          align="right"
-          verticalAlign="top"
-          iconType="circle"
-          iconSize={10}
-          height={95}
-          formatter={renderColorfulLegendText}
-        />
-        <Bar
-          yAxisId="kilogram"
-          dataKey="kilogram"
-          name="Poids (kg)"
-          fill="rgba(40, 45, 48, 1)"
-          radius={[4, 4, 0, 0]}
-        />
-        <Bar
-          yAxisId="calories"
-          dataKey="calories"
-          name="Calories brûlées (kCal)"
-          fill="rgba(230, 0, 0, 1)"
-          radius={[4, 4, 0, 0]}
-        />
-      </BarChart>
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{ fill: " rgba(196, 196, 196, 0.5)" }}
+          />
+          <Legend
+            marginBottom={10}
+            align="right"
+            verticalAlign="top"
+            iconType="circle"
+            iconSize={10}
+            height={95}
+            formatter={renderColorfulLegendText}
+          />
+          <Bar
+            yAxisId="kilogram"
+            dataKey="kilogram"
+            name="Poids (kg)"
+            fill="rgba(40, 45, 48, 1)"
+            radius={[4, 4, 0, 0]}
+          />
+          <Bar
+            yAxisId="calories"
+            dataKey="calories"
+            name="Calories brûlées (kCal)"
+            fill="rgba(230, 0, 0, 1)"
+            radius={[4, 4, 0, 0]}
+          />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
