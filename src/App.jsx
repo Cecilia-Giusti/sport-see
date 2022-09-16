@@ -12,6 +12,7 @@ import dataUpdateSession from "./utils/dataUpdateSession";
 import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
 import { DataMocked } from "./components/AppContext";
+import Error from "./components/Error";
 
 const App = () => {
   const [dataUser, setDataUser] = useState(null);
@@ -33,18 +34,20 @@ const App = () => {
   return (
     <div className="section--profilPage">
       {dataUser &&
-        dataSession &&
-        dataAverage &&
-        dataPerformance &&
-        dataScore && (
-          <ProfilePage
-            dataUser={dataUser}
-            dataActivities={dataUpdateSession(dataSession)}
-            dataAverage={dataUpdateAverage(dataAverage)}
-            dataPerformance={dataUpdatePerformance(dataPerformance.data)}
-            dataScore={dataUpdateScore(dataScore)}
-          />
-        )}
+      dataSession &&
+      dataAverage &&
+      dataPerformance &&
+      dataScore ? (
+        <ProfilePage
+          dataUser={dataUser}
+          dataActivities={dataUpdateSession(dataSession)}
+          dataAverage={dataUpdateAverage(dataAverage)}
+          dataPerformance={dataUpdatePerformance(dataPerformance.data)}
+          dataScore={dataUpdateScore(dataScore)}
+        />
+      ) : (
+        <Error />
+      )}
     </div>
   );
 };

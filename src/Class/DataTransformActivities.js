@@ -1,6 +1,5 @@
 export class DataTransformActivities {
   constructor(data) {
-    this._data = data;
     this._day = data.day;
     this._kilogram = data.kilogram;
     this._calories = data.calories;
