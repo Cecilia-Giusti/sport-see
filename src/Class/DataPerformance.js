@@ -1,4 +1,4 @@
-export class DataTransformPerformance {
+export class DataPerformance {
   constructor(element) {
     this._data = element;
     this._number = element.kind;

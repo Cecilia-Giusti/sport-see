@@ -1,4 +1,4 @@
-export class DataTransformAverage {
+export class DataSessionsAverage {
   constructor(data) {
     this._day = data.day;
     this._sessionLenght = data.sessionLength;

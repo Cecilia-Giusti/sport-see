@@ -1,4 +1,4 @@
-export class DataTransformScore {
+export class DataScore {
   constructor(data) {
     this._score = data;
   }

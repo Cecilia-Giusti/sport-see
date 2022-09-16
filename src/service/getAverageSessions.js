@@ -1,4 +1,5 @@
 import axios from "axios";
+import { DataSessionsAverage } from "../Class/DataSessionsAverage";
 
 async function getAverageSessions(setDataAverage, dataMocked, userId) {
   if (dataMocked) {
@@ -9,13 +10,18 @@ async function getAverageSessions(setDataAverage, dataMocked, userId) {
     try {
       await axios
         .get(`http://localhost:3000/user/${userId}/average-sessions`)
-        .then((res) => setDataAverage(res.data.data.sessions));
+        .then((res) => {
+          let dataAverageArray = [];
+          let reponse = res.data.data.sessions;
+          reponse.forEach((element) => {
+            let newData = new DataSessionsAverage(element);
+            dataAverageArray.push(newData);
+          });
+          return setDataAverage(dataAverageArray);
+        });
     } catch (error) {
       console.log(error);
       console.log(error.response);
-      if (error.response.status === 404) {
-        return 404;
-      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { DataActivities } from "../Class/DataActivities";
 
 async function getSessions(setDataSession, dataMocked, userId) {
   if (dataMocked) {
@@ -9,9 +10,19 @@ async function getSessions(setDataSession, dataMocked, userId) {
     try {
       await axios
         .get(`http://localhost:3000/user/${userId}/activity`)
-        .then((res) => setDataSession(res.data.data.sessions));
+        .then((res) => {
+          let dataSessionArray = [];
+          let data = res.data.data.sessions;
+
+          data.forEach((element) => {
+            let newData = new DataActivities(element);
+            dataSessionArray.push(newData);
+          });
+          return setDataSession(dataSessionArray);
+        });
     } catch (error) {
       console.log(error);
+      console.log(error.response);
     }
   }
 }

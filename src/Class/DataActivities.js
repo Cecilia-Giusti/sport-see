@@ -1,4 +1,4 @@
-export class DataTransformActivities {
+export class DataActivities {
   constructor(data) {
     this._day = data.day;
     this._kilogram = data.kilogram;

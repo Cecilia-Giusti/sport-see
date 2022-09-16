@@ -1,4 +1,5 @@
 import axios from "axios";
+import { DataPerformance } from "../Class/DataPerformance";
 
 async function getPerformances(setDataPerformance, dataMocked, userId) {
   if (dataMocked) {
@@ -9,9 +10,20 @@ async function getPerformances(setDataPerformance, dataMocked, userId) {
     try {
       await axios
         .get(`http://localhost:3000/user/${userId}/performance`)
-        .then((res) => setDataPerformance(res.data.data));
+        .then((res) => {
+          let dataSessionArray = [];
+          let data = res.data.data.data;
+
+          data.forEach((element) => {
+            let newData = new DataPerformance(element);
+            dataSessionArray.push(newData);
+          });
+
+          return setDataPerformance(dataSessionArray.reverse());
+        });
     } catch (error) {
       console.log(error);
+      console.log(error.response);
     }
   }
 }

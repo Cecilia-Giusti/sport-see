@@ -6,10 +6,6 @@ import getSessions from "./service/getSessions";
 import getAverageSessions from "./service/getAverageSessions";
 import getPerformances from "./service/getPerformances";
 import "./style/app.css";
-import dataUpdateAverage from "./utils/dataUpdateAverage";
-import dataUpdateScore from "./utils/dataUpdateScore";
-import dataUpdateSession from "./utils/dataUpdateSession";
-import dataUpdatePerformance from "./utils/dataUpdatePerformance";
 import ProfilePage from "./pages/ProfilePage";
 import { DataMocked } from "./components/AppContext";
 import Error from "./components/Error";
@@ -40,10 +36,10 @@ const App = () => {
       dataScore ? (
         <ProfilePage
           dataUser={dataUser}
-          dataActivities={dataUpdateSession(dataSession)}
-          dataAverage={dataUpdateAverage(dataAverage)}
-          dataPerformance={dataUpdatePerformance(dataPerformance.data)}
-          dataScore={dataUpdateScore(dataScore)}
+          dataActivities={dataSession}
+          dataAverage={dataAverage}
+          dataPerformance={dataPerformance}
+          dataScore={dataScore}
         />
       ) : (
         <Error />
