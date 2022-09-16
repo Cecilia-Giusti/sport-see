@@ -3,9 +3,20 @@ import { DataScore } from "../Class/DataScore";
 
 async function getScore(setDataScore, dataMocked, userId) {
   if (dataMocked) {
-    await axios
-      .get("./data/db.json")
-      .then((res) => setDataScore(res.data.user.score));
+    await axios.get("./data/db.json").then((res) => {
+      let data = res.data.user.score;
+      let dataUpdate = new DataScore(data);
+
+      let newData = [
+        {
+          name: `${dataUpdate.name}`,
+          score: dataUpdate.score,
+          fill: `${dataUpdate.fill}`,
+        },
+      ];
+
+      return setDataScore(newData);
+    });
   } else {
     try {
       axios.get(`http://localhost:3000/user/${userId}`).then((res) => {

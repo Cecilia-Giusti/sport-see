@@ -3,7 +3,12 @@ import { DataUser } from "../Class/DataUser";
 
 async function getUsers(setDataUser, dataMocked, userId) {
   if (dataMocked) {
-    await axios.get("./data/db.json").then((res) => setDataUser(res.data.user));
+    await axios.get("./data/db.json").then((res) => {
+      let data = res.data.user;
+
+      let newData = new DataUser(data);
+      return setDataUser(newData);
+    });
   } else {
     try {
       await axios.get(`http://localhost:3000/user/${userId}`).then((res) => {

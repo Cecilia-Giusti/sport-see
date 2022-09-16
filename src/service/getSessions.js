@@ -3,9 +3,16 @@ import { DataActivities } from "../Class/DataActivities";
 
 async function getSessions(setDataSession, dataMocked, userId) {
   if (dataMocked) {
-    await axios
-      .get("./data/db.json")
-      .then((res) => setDataSession(res.data.activity.sessions));
+    await axios.get("./data/db.json").then((res) => {
+      let dataSessionArray = [];
+      let data = res.data.activity.sessions;
+
+      data.forEach((element) => {
+        let newData = new DataActivities(element);
+        dataSessionArray.push(newData);
+      });
+      return setDataSession(dataSessionArray);
+    });
   } else {
     try {
       await axios

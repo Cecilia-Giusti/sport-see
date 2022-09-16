@@ -3,9 +3,15 @@ import { DataSessionsAverage } from "../Class/DataSessionsAverage";
 
 async function getAverageSessions(setDataAverage, dataMocked, userId) {
   if (dataMocked) {
-    await axios
-      .get("./data/db.json")
-      .then((res) => setDataAverage(res.data["average-session"].sessions));
+    await axios.get("./data/db.json").then((res) => {
+      let dataAverageArray = [];
+      let reponse = res.data["average-session"].sessions;
+      reponse.forEach((element) => {
+        let newData = new DataSessionsAverage(element);
+        dataAverageArray.push(newData);
+      });
+      return setDataAverage(dataAverageArray);
+    });
   } else {
     try {
       await axios
