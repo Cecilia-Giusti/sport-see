@@ -13,7 +13,7 @@ const ProfilePage = ({
 }) => {
   return (
     <div className="profilPage__container">
-      <Header firstName={dataUser.userInfos.firstName} />
+      <Header firstName={dataUser.firstName} />
       <div className="profilPage__content">
         <Activities
           dataActivities={dataActivities}
