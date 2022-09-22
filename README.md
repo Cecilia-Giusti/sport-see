@@ -15,9 +15,9 @@
 
 - Launch the Back-end on the port 3000 with the command `npm run dev`
 - Fork or clone the repository
-- The `npm` command will allow you to install the dependencies.
+- The `npm install` command will allow you to install the dependencies.
 - The `npm start` command will allow you to launch the project.
 
-## Authors
+## Author
 
 Cecilia Giusti
