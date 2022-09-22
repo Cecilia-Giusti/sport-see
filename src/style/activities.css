@@ -1,0 +1,14 @@
+.activities__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 835px;
+  width: 74%;
+}
+
+.activities__contents {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 835px;
+}

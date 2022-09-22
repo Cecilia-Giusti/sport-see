@@ -1,0 +1,60 @@
+.barChart {
+  margin-bottom: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  position: relative;
+}
+
+.barChart__title {
+  position: absolute;
+  left: 3.83%;
+  top: 2%;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+
+  color: #20253a;
+  z-index: 100;
+}
+
+.barChart__content {
+  background: rgba(251, 251, 251, 1);
+  border-radius: 5px;
+}
+
+.barChart .recharts-cartesian-axis-ticks {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.barChart__content--toolTip {
+  width: 39px;
+  background-color: #e60000;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 7px;
+}
+
+.barChart__item--toolTip {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 7px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+
+.barChart .recharts-rectangle .recharts-tooltip-cursor {
+  background-color: rgba(196, 196, 196, 0.5);
+}

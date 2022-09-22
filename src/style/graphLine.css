@@ -1,0 +1,50 @@
+.graphLine {
+  position: relative;
+}
+
+.graphLine__content {
+  border-radius: 5px;
+  background-color: #ff0000;
+}
+
+.graphLine__content:focus-visible {
+  outline: none;
+}
+
+.graphLine__title {
+  width: 147px;
+  height: 48px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #ffffff;
+
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 100;
+  left: 34px;
+}
+
+.graphLine__content--toolTip {
+  width: 39px;
+  height: 25px;
+  background-color: white;
+}
+
+.graphLine__content--toolTip:focus-visible,
+.graphLine__item--toolTip:focus-visible,
+.recharts-tooltip-wrapper:focus-visible {
+  outline: none;
+}
+
+.graphLine__item--toolTip {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 24px;
+  text-align: center;
+}
