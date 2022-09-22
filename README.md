@@ -1,4 +1,4 @@
-# P12 Sport-see : analytics dashboard
+# P12 Sport-see : analytics dashboard V1
 
 ## Technologies
 
