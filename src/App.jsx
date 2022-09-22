@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import getUsers from "./service/getUsers";
-import getScore from "./service/getScore";
-import getSessions from "./service/getSessions";
-import getAverageSessions from "./service/getAverageSessions";
-import getPerformances from "./service/getPerformances";
+import { getUsers, getScore } from "./services/users";
+import getSessions from "./services/sessions";
+import getAverageSessions from "./services/averageSessions";
+import getPerformances from "./services/performances";
 import "./style/app.css";
 import ProfilePage from "./pages/ProfilePage";
-import { DataMocked } from "./components/AppContext";
 import Error from "./components/Error";
 
 /** APP
@@ -19,16 +17,16 @@ const App = () => {
   const [dataAverage, setDataAverage] = useState(null);
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
-  const dataMocked = useContext(DataMocked);
+
   const userId = useParams().id;
 
   useEffect(() => {
-    getUsers(setDataUser, dataMocked, userId);
-    getSessions(setDataSession, dataMocked, userId);
-    getAverageSessions(setDataAverage, dataMocked, userId);
-    getPerformances(setDataPerformance, dataMocked, userId);
-    getScore(setDataScore, dataMocked, userId);
-  }, [dataMocked, userId]);
+    getUsers(setDataUser, userId);
+    getSessions(setDataSession, userId);
+    getAverageSessions(setDataAverage, userId);
+    getPerformances(setDataPerformance, userId);
+    getScore(setDataScore, userId);
+  }, [userId]);
 
   return (
     <div className="section--profilPage">

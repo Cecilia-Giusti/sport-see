@@ -1,19 +1,19 @@
 import axios from "axios";
-import { DataActivities } from "../Class/DataActivities";
+import { Activities } from "../models/Activities";
+import { dataMocked } from "./apiSetting";
 
 /**  Get Data - Sessions
  * @param {function} setDataSession - to update dataSession
- * @param {Boolean} dataMocked - if data are mocked
  * @param {number} userId - user id
  */
-async function getSessions(setDataSession, dataMocked, userId) {
+async function getSessions(setDataSession, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataSessionArray = [];
       let data = res.data.activity.sessions;
 
       data.forEach((element) => {
-        let newData = new DataActivities(element);
+        let newData = new Activities(element);
         dataSessionArray.push(newData);
       });
       return setDataSession(dataSessionArray);
@@ -27,7 +27,7 @@ async function getSessions(setDataSession, dataMocked, userId) {
           let data = res.data.data.sessions;
 
           data.forEach((element) => {
-            let newData = new DataActivities(element);
+            let newData = new Activities(element);
             dataSessionArray.push(newData);
           });
           return setDataSession(dataSessionArray);
