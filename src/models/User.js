@@ -2,7 +2,7 @@
  * @constructor
  * @param {object} data - user information
  */
-export class DataUser {
+export class User {
   constructor(data) {
     this._firstname = data.userInfos.firstName;
     this._keyData = data.keyData;

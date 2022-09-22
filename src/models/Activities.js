@@ -2,7 +2,7 @@
  * @constructor
  * @param {object} data - A session
  */
-export class DataActivities {
+export class Activities {
   constructor(data) {
     this._day = data.day;
     this._kilogram = data.kilogram;
