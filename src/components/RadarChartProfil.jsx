@@ -17,8 +17,8 @@ const RadarChartProfil = ({ data }) => {
   return (
     <div className="radarChart">
       <RadarChart
-        width={258}
-        height={263}
+        width={220}
+        height={224}
         margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
         data={data}
         style={{ backgroundColor: "#282D30", borderRadius: "5px" }}

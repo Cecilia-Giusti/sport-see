@@ -43,8 +43,8 @@ const LineChartProfil = ({ data }) => {
       <h3 className="graphLine__title"> Durée moyenne des sessions</h3>
 
       <LineChart
-        width={258}
-        height={263}
+        width={220}
+        height={224}
         data={data}
         margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
         className="graphLine__content"
