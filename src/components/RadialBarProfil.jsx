@@ -16,11 +16,12 @@ const RadialBarProfil = ({ data }) => {
         de votre objectif
       </h6>
       <RadialBarChart
-        width={258}
-        height={263}
+        width={220}
+        height={224}
         data={data}
         style={{ backgroundColor: "#FBFBFB", borderRadius: "5px" }}
         innerRadius={80}
+        outerRadius={140}
         barSize={10}
         startAngle={200 + 360}
         endAngle={200}

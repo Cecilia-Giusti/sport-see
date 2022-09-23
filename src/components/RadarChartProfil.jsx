@@ -17,8 +17,9 @@ const RadarChartProfil = ({ data }) => {
   return (
     <div className="radarChart">
       <RadarChart
-        width={258}
-        height={263}
+        width={220}
+        height={224}
+        outerRadius={70}
         margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
         data={data}
         style={{ backgroundColor: "#282D30", borderRadius: "5px" }}
@@ -28,9 +29,9 @@ const RadarChartProfil = ({ data }) => {
           dataKey="subject"
           tickLine={false}
           axisLine={false}
-          dy={5}
+          dy={2}
           stroke="#FFF"
-          tick={{ fill: "#FFFFFF", fontSize: 12 }}
+          tick={{ fill: "#FFFFFF", fontSize: 11 }}
         />
         <PolarRadiusAxis tick={false} tickCount={5} axisLine={false} />
         <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />

@@ -1,18 +1,18 @@
 import axios from "axios";
-import { DataSessionsAverage } from "../Class/DataSessionsAverage";
+import { SessionsAverage } from "../models/SessionsAverage";
+import { dataMocked } from "./apiSetting";
 
 /**  Get Data - Average session
  * @param {function} setDataAverage - to update dataAverage
- * @param {Boolean} dataMocked - if data are mocked
  * @param {number} userId - user id
  */
-async function getAverageSessions(setDataAverage, dataMocked, userId) {
+async function getAverageSessions(setDataAverage, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataAverageArray = [];
       let reponse = res.data["average-session"].sessions;
       reponse.forEach((element) => {
-        let newData = new DataSessionsAverage(element);
+        let newData = new SessionsAverage(element);
         dataAverageArray.push(newData);
       });
       return setDataAverage(dataAverageArray);
@@ -25,7 +25,7 @@ async function getAverageSessions(setDataAverage, dataMocked, userId) {
           let dataAverageArray = [];
           let reponse = res.data.data.sessions;
           reponse.forEach((element) => {
-            let newData = new DataSessionsAverage(element);
+            let newData = new SessionsAverage(element);
             dataAverageArray.push(newData);
           });
           return setDataAverage(dataAverageArray);

@@ -1,19 +1,19 @@
 import axios from "axios";
-import { DataPerformance } from "../Class/DataPerformance";
+import { Performance } from "../models/Performance";
+import { dataMocked } from "./apiSetting";
 
 /**  Get Data - Performance
  * @param {function} setDataPerformance - to update dataPerformance
- * @param {Boolean} dataMocked - if data are mocked
  * @param {number} userId - user id
  */
-async function getPerformances(setDataPerformance, dataMocked, userId) {
+async function getPerformances(setDataPerformance, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataSessionArray = [];
       let data = res.data.performance.data;
 
       data.forEach((element) => {
-        let newData = new DataPerformance(element);
+        let newData = new Performance(element);
         dataSessionArray.push(newData);
       });
 
@@ -28,7 +28,7 @@ async function getPerformances(setDataPerformance, dataMocked, userId) {
           let data = res.data.data.data;
 
           data.forEach((element) => {
-            let newData = new DataPerformance(element);
+            let newData = new Performance(element);
             dataSessionArray.push(newData);
           });
 

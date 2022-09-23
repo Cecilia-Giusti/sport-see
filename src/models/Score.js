@@ -2,7 +2,7 @@
  * @constructor
  * @param {object} data - A score
  */
-export class DataScore {
+export class Score {
   constructor(data) {
     this._score = data;
   }
