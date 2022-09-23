@@ -7,6 +7,7 @@ const Error = () => {
   return (
     <div>
       <h1>Erreur !</h1>
+      <p>Cette page n'existe pas</p>
     </div>
   );
 };

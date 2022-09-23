@@ -21,6 +21,7 @@ const RadialBarProfil = ({ data }) => {
         data={data}
         style={{ backgroundColor: "#FBFBFB", borderRadius: "5px" }}
         innerRadius={80}
+        outerRadius={140}
         barSize={10}
         startAngle={200 + 360}
         endAngle={200}
