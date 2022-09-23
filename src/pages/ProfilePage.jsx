@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Activities from "../components/Activities";
 import Header from "../components/Header";
 import "../style/profilePage.css";
 import Macros from "../components/Macros";
-import PropTypes from "prop-types";
+import getSessions from "../services/sessions";
+import getAverageSessions from "../services/averageSessions";
+import getPerformances from "../services/performances";
+import { getScore } from "../services/users";
+import { getUsers } from "../services/users";
+import { useParams } from "react-router";
+import Error from "../components/Error";
 
 /** Profile page
  * @param {array} dataUser - user data
@@ -13,60 +19,46 @@ import PropTypes from "prop-types";
  * @param {array} dataScore - score data
  * @return {JSX.Element}
  */
-const ProfilePage = ({
-  dataUser,
-  dataActivities,
-  dataAverage,
-  dataPerformance,
-  dataScore,
-}) => {
+const ProfilePage = () => {
+  const [dataUser, setDataUser] = useState(null);
+  const userId = useParams().id;
+  const [dataSession, setDataSession] = useState(null);
+  const [dataAverage, setDataAverage] = useState(null);
+  const [dataPerformance, setDataPerformance] = useState(null);
+  const [dataScore, setDataScore] = useState(null);
+
+  useEffect(() => {
+    getUsers(setDataUser, userId);
+    getSessions(setDataSession, userId);
+    getAverageSessions(setDataAverage, userId);
+    getPerformances(setDataPerformance, userId);
+    getScore(setDataScore, userId);
+  }, [dataUser, userId]);
+
   return (
-    <div className="profilPage__container">
-      <Header firstName={dataUser.firstName} />
-      <div className="profilPage__content">
-        <Activities
-          dataActivities={dataActivities}
-          dataAverage={dataAverage}
-          dataPerformance={dataPerformance}
-          dataScore={dataScore}
-        />
-        <Macros macros={dataUser.keyData} />
-      </div>
+    <div className="section--profilPage">
+      {dataUser &&
+      dataSession &&
+      dataAverage &&
+      dataPerformance &&
+      dataScore ? (
+        <div className="profilPage__container">
+          <Header firstName={dataUser.firstName} />
+          <div className="profilPage__content">
+            <Activities
+              dataSession={dataSession}
+              dataAverage={dataAverage}
+              dataPerformance={dataPerformance}
+              dataScore={dataScore}
+            />
+            <Macros macros={dataUser.keyData} />
+          </div>
+        </div>
+      ) : (
+        <Error />
+      )}
     </div>
   );
-};
-
-ProfilePage.propTypes = {
-  dataUser: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    keyData: PropTypes.object.isRequired,
-  }),
-  dataActivities: PropTypes.arrayOf(
-    PropTypes.shape({
-      calories: PropTypes.number.isRequired,
-      day: PropTypes.number.isRequired,
-      kilogram: PropTypes.number.isRequired,
-    })
-  ),
-  dataAverage: PropTypes.arrayOf(
-    PropTypes.shape({
-      day: PropTypes.string.isRequired,
-      sessionLenght: PropTypes.number.isRequired,
-    })
-  ),
-  dataPerformance: PropTypes.arrayOf(
-    PropTypes.shape({
-      subject: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
-    })
-  ),
-  dataScore: PropTypes.arrayOf(
-    PropTypes.shape({
-      fill: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      score: PropTypes.number.isRequired,
-    })
-  ),
 };
 
 export default ProfilePage;
