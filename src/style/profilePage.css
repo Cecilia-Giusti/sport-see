@@ -1,12 +1,12 @@
 .profilPage__container {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 95%;
   margin: auto;
 }
 
 .profilPage__content {
   display: flex;
-  gap: 31px;
-  margin-top: 70px;
+  gap: 20px;
+  margin-top: 30px;
 }

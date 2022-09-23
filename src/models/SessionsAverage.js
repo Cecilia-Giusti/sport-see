@@ -2,7 +2,7 @@
  * @constructor
  * @param {object} data - A average session with a day
  */
-export class DataSessionsAverage {
+export class SessionsAverage {
   constructor(data) {
     this._day = data.day;
     this._sessionLenght = data.sessionLength;

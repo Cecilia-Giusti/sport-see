@@ -2,7 +2,7 @@
  * @constructor
  * @param {object} element - A performance
  */
-export class DataPerformance {
+export class Performance {
   constructor(element) {
     this._value = element.value;
     this._number = element.kind;

@@ -1,16 +1,44 @@
 import axios from "axios";
-import { DataScore } from "../Class/DataScore";
+import { User } from "../models/User";
+import { Score } from "../models/Score";
+import { dataMocked } from "./apiSetting";
+
+/**  Get Data - user
+ * @param {function} setDataUser - to update dataUser
+ * @param {number} userId - user id
+ */
+export async function getUsers(setDataUser, userId) {
+  if (dataMocked) {
+    await axios.get("./data/db.json").then((res) => {
+      let data = res.data.user;
+
+      let newData = new User(data);
+      return setDataUser(newData);
+    });
+  } else {
+    try {
+      await axios.get(`http://localhost:3000/user/${userId}`).then((res) => {
+        let data = res.data.data;
+
+        let newData = new User(data);
+        return setDataUser(newData);
+      });
+    } catch (error) {
+      console.log(error);
+      console.log(error.response);
+    }
+  }
+}
 
 /**  Get Data - Score
  * @param {function} setDataPerformance - to update dataScore
- * @param {Boolean} dataMocked - if data are mocked
  * @param {number} userId - user id
  */
-async function getScore(setDataScore, dataMocked, userId) {
+export async function getScore(setDataScore, userId) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let data = res.data.user.score;
-      let dataUpdate = new DataScore(data);
+      let dataUpdate = new Score(data);
 
       let newData = [
         {
@@ -27,7 +55,7 @@ async function getScore(setDataScore, dataMocked, userId) {
       axios.get(`http://localhost:3000/user/${userId}`).then((res) => {
         if (res.data.data.todayScore) {
           let data = res.data.data.todayScore;
-          let dataUpdate = new DataScore(data);
+          let dataUpdate = new Score(data);
 
           let newData = [
             {
@@ -40,7 +68,7 @@ async function getScore(setDataScore, dataMocked, userId) {
           return setDataScore(newData);
         } else {
           let data = res.data.data.score;
-          let dataUpdate = new DataScore(data);
+          let dataUpdate = new Score(data);
 
           let newData = [
             {
@@ -59,5 +87,3 @@ async function getScore(setDataScore, dataMocked, userId) {
     }
   }
 }
-
-export default getScore;

@@ -14,14 +14,14 @@ import PropTypes from "prop-types";
  * @return {JSX.Element}
  */
 const Activities = ({
-  dataActivities,
+  dataSession,
   dataAverage,
   dataPerformance,
   dataScore,
 }) => {
   return (
     <div className="activities__container">
-      <BarChartProfil data={dataActivities} />
+      <BarChartProfil data={dataSession} />
       <div className="activities__contents">
         <LineChartProfil data={dataAverage} />
         <RadarChartProfil data={dataPerformance} />
