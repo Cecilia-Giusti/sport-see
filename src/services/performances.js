@@ -6,7 +6,7 @@ import { dataMocked } from "./apiSetting";
  * @param {function} setDataPerformance - to update dataPerformance
  * @param {number} userId - user id
  */
-async function getPerformances(setDataPerformance, userId) {
+async function getPerformances(setDataPerformance, userId, setErrorCode) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataSessionArray = [];
@@ -37,6 +37,7 @@ async function getPerformances(setDataPerformance, userId) {
     } catch (error) {
       console.log(error);
       console.log(error.response);
+      return setErrorCode(error.code);
     }
   }
 }

@@ -7,7 +7,7 @@ import { dataMocked } from "./apiSetting";
  * @param {function} setDataUser - to update dataUser
  * @param {number} userId - user id
  */
-export async function getUsers(setDataUser, userId) {
+export async function getUsers(setDataUser, userId, setErrorCode) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let data = res.data.user;
@@ -26,6 +26,7 @@ export async function getUsers(setDataUser, userId) {
     } catch (error) {
       console.log(error);
       console.log(error.response);
+      return setErrorCode(error.code);
     }
   }
 }
@@ -34,7 +35,7 @@ export async function getUsers(setDataUser, userId) {
  * @param {function} setDataPerformance - to update dataScore
  * @param {number} userId - user id
  */
-export async function getScore(setDataScore, userId) {
+export async function getScore(setDataScore, userId, setErrorCode) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let data = res.data.user.score;
@@ -84,6 +85,7 @@ export async function getScore(setDataScore, userId) {
     } catch (error) {
       console.log(error);
       console.log(error.response);
+      return setErrorCode(error.code);
     }
   }
 }

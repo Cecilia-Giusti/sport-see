@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/:id" element={<ProfilePage />} />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Error code={"ERR_BAD_REQUEST"} />} />
       </Routes>
     </BrowserRouter>
   );

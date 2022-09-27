@@ -6,7 +6,7 @@ import { dataMocked } from "./apiSetting";
  * @param {function} setDataSession - to update dataSession
  * @param {number} userId - user id
  */
-async function getSessions(setDataSession, userId) {
+async function getSessions(setDataSession, userId, setErrorCode) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataSessionArray = [];
@@ -35,6 +35,7 @@ async function getSessions(setDataSession, userId) {
     } catch (error) {
       console.log(error);
       console.log(error.response);
+      return setErrorCode(error.code);
     }
   }
 }

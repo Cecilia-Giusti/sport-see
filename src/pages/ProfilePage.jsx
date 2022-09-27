@@ -20,20 +20,22 @@ import Error from "../components/Error";
  * @return {JSX.Element}
  */
 const ProfilePage = () => {
-  const [dataUser, setDataUser] = useState(null);
   const userId = useParams().id;
+
+  const [dataUser, setDataUser] = useState(null);
   const [dataSession, setDataSession] = useState(null);
   const [dataAverage, setDataAverage] = useState(null);
   const [dataPerformance, setDataPerformance] = useState(null);
   const [dataScore, setDataScore] = useState(null);
+  const [errorCode, setErrorCode] = useState(null);
 
   useEffect(() => {
-    getUsers(setDataUser, userId);
-    getSessions(setDataSession, userId);
-    getAverageSessions(setDataAverage, userId);
-    getPerformances(setDataPerformance, userId);
-    getScore(setDataScore, userId);
-  }, [dataUser, userId]);
+    getUsers(setDataUser, userId, setErrorCode);
+    getSessions(setDataSession, userId, setErrorCode);
+    getAverageSessions(setDataAverage, userId, setErrorCode);
+    getPerformances(setDataPerformance, userId, setErrorCode);
+    getScore(setDataScore, userId, setErrorCode);
+  }, [dataUser, userId, setErrorCode]);
 
   return (
     <div className="section--profilPage">
@@ -55,7 +57,7 @@ const ProfilePage = () => {
           </div>
         </div>
       ) : (
-        <Error />
+        <Error code={errorCode} />
       )}
     </div>
   );
