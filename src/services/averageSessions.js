@@ -6,7 +6,7 @@ import { dataMocked } from "./apiSetting";
  * @param {function} setDataAverage - to update dataAverage
  * @param {number} userId - user id
  */
-async function getAverageSessions(setDataAverage, userId) {
+async function getAverageSessions(setDataAverage, userId, setErrorCode) {
   if (dataMocked) {
     await axios.get("./data/db.json").then((res) => {
       let dataAverageArray = [];
@@ -33,6 +33,7 @@ async function getAverageSessions(setDataAverage, userId) {
     } catch (error) {
       console.log(error);
       console.log(error.response);
+      return setErrorCode(error.code);
     }
   }
 }
