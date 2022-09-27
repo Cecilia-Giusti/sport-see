@@ -1,0 +1,17 @@
+.error_content {
+  display: flex;
+  height: 300px;
+  row-gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_title {
+  font-size: 50px;
+  color: #ff0000;
+}
+
+.error_body {
+  font-size: 30px;
+}
