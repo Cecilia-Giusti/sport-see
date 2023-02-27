@@ -59,11 +59,6 @@ SportSee est une startup dédiée au coaching sportif qui cherche à lancer une 
 
 <h3>Voir le résultat : </h3>
 
-<a href="https://cecilia-giusti.github.io/P11---Kasa"> Cliquez ici 
-</a>
-
-<h3>Voir le résultat : </h3>
-
 Déploiement en cours
 
 
