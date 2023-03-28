@@ -50,7 +50,7 @@ SportSee est une startup dédiée au coaching sportif qui cherche à lancer une 
 - Proptypes
 
 <h3>Maquettes figma: </h3>
-<a href="https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1&t=EI6oE0bC3A9Wv7yt-0"> Voir la maquette
+<a href="https://www.figma.com/file/9iLmfwh6T2xuqdu21bPizw/UI-design-Sportify-FR-(Copy)?node-id=0-1&t=6qm8asDYfaDIwScY-0"> Voir la maquette
 </a>
 
 <h3>Tableau des user Stories: </h3>
